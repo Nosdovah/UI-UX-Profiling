@@ -21,6 +21,8 @@
             --row-hover: rgba(255, 255, 255, 0.05);
             --table-header-bg: rgba(30, 41, 59, 0.9);
             --usecase-highlight: rgba(83, 109, 255, 0.1);
+            --problem-hover-bg: rgba(40, 48, 70, 0.8);
+            --problem-hover-shadow: rgba(0, 0, 0, 0.5);
         }
 
         /* Light Mode Variables */
@@ -33,6 +35,8 @@
             --row-hover: rgba(0, 0, 0, 0.05);
             --table-header-bg: rgba(255, 255, 255, 0.9);
             --usecase-highlight: rgba(83, 109, 255, 0.05);
+            --problem-hover-bg: rgba(255, 107, 107, 0.05);
+            --problem-hover-shadow: rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -586,8 +590,8 @@
 
         .problem-item:hover {
             transform: scale(1.01) translateX(5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-            background: rgba(40, 48, 70, 0.8);
+            box-shadow: 0 10px 25px -5px var(--problem-hover-shadow);
+            background: var(--problem-hover-bg);
         }
 
         .problem-icon {
