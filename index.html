@@ -19,6 +19,20 @@
             --accent: #FF6B6B;
             --accent-gradient: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
             --row-hover: rgba(255, 255, 255, 0.05);
+            --table-header-bg: rgba(30, 41, 59, 0.9);
+            --usecase-highlight: rgba(83, 109, 255, 0.1);
+        }
+
+        /* Light Mode Variables */
+        body.light-mode {
+            --bg-color: #f1f5f9;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --text-main: #1e293b;
+            --text-muted: #475569;
+            --row-hover: rgba(0, 0, 0, 0.05);
+            --table-header-bg: rgba(255, 255, 255, 0.9);
+            --usecase-highlight: rgba(83, 109, 255, 0.05);
         }
 
         * {
@@ -150,7 +164,7 @@
             color: var(--text-muted);
             position: sticky;
             top: 0;
-            background: rgba(30, 41, 59, 0.9);
+            background: var(--table-header-bg);
             backdrop-filter: blur(8px);
             z-index: 10;
         }
@@ -185,7 +199,7 @@
 
         td.stakeholder {
             font-weight: 600;
-            color: #fff;
+            color: var(--text-main);
             width: 20%;
         }
 
@@ -285,7 +299,7 @@
 
         .profile-header h2 {
             font-size: 1.8rem;
-            color: #fff;
+            color: var(--text-main);
             font-weight: 600;
         }
 
@@ -313,7 +327,7 @@
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             font-weight: 600;
-            color: #fff;
+            color: var(--text-main);
         }
 
         /* Business Model Cards Grid */
@@ -360,7 +374,7 @@
         }
 
         .card h4 {
-            color: #fff;
+            color: var(--text-main);
             font-size: 1.1rem;
             margin-bottom: 0.8rem;
             font-weight: 600;
@@ -444,7 +458,7 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at top right, rgba(83, 109, 255, 0.1), transparent 50%);
+            background: radial-gradient(circle at top right, var(--usecase-highlight), transparent 50%);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 0;
@@ -481,7 +495,7 @@
         }
 
         .usecase-header h3 {
-            color: #fff;
+            color: var(--text-main);
             font-size: 1.2rem;
             font-weight: 600;
             line-height: 1.2;
@@ -585,7 +599,7 @@
         }
 
         .problem-content h4 {
-            color: #fff;
+            color: var(--text-main);
             font-size: 1.15rem;
             margin-bottom: 0.5rem;
             font-weight: 600;
@@ -700,7 +714,7 @@
         }
 
         .need-text h4 {
-            color: #fff;
+            color: var(--text-main);
             font-size: 1.15rem;
             margin-bottom: 0.4rem;
             font-weight: 600;
@@ -835,6 +849,147 @@
 
             .usecase-example {
                 align-self: center;
+            }
+        }
+
+        /* --- Floating Buttons --- */
+        .controls-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            background: var(--accent-gradient);
+            color: #fff;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn.secondary {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-mode .action-btn.secondary {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(255, 107, 107, 0.6);
+        }
+        
+        .action-btn.secondary:hover {
+            border-color: var(--text-main);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        @media print {
+            html, body {
+                background: #0f172a !important;
+                background-color: #0f172a !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            /* Aggressive hack to force background painting if "print graphics" is disabled */
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #0f172a !important;
+                z-index: -9999;
+                pointer-events: none;
+            }
+            
+            .print-btn, .bg-orb {
+                display: none !important;
+            }
+            
+            .container {
+                animation: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            /* Convert glassmorphism transparency to solid colors for print */
+            .table-container, .card, .usecase-card, .problem-item, .need-item {
+                background-color: #1e293b !important;
+                border: 1px solid #334155 !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                box-shadow: none !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+                margin-bottom: 1.5rem !important; /* Spacing since we remove grid */
+            }
+
+            /* Convert Grid to Block for reliable PDF Page Breaking */
+            .cards-container, .usecase-grid, .needs-grid, .problem-list {
+                display: block !important;
+            }
+
+            /* Force cards to take full width neatly block by block */
+            .card, .usecase-card, .need-item {
+                width: 100% !important;
+                display: block !important;
+            }
+
+            /* Fix header text bleeding and gradient issues in print */
+            h1 {
+                background: none !important;
+                -webkit-text-fill-color: #FF6B6B !important;
+                color: #FF6B6B !important;
+                font-size: 2.2rem !important;
+            }
+
+            .section-title, .table-title, .profile-header {
+                break-after: avoid !important;
+                page-break-after: avoid !important;
+                margin-top: 2rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            th, td {
+                border-bottom: 1px solid #334155 !important;
+            }
+
+            /* Ensure text stays readable over dark solid backgrounds */
+            h2, h3, h4, th, .stakeholder {
+                color: #f8fafc !important;
+            }
+            
+            p, .peran, .desc {
+                color: #cbd5e1 !important;
+            }
+            
+            .usecase-example, .badge {
+                border: 1px solid #536DFF !important;
             }
         }
     </style>
@@ -1300,6 +1455,42 @@
         </div>
 
     </div>
+
+    <!-- Floating Controls -->
+    <div class="controls-container">
+        <!-- Theme Toggle Button -->
+        <button class="action-btn secondary print-btn" onclick="toggleTheme()" id="theme-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="theme-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <span id="theme-text">Light Mode</span>
+        </button>
+
+        <!-- Export to PDF Button -->
+        <button class="action-btn print-btn" onclick="window.print()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            Export PDF
+        </button>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const isLightMode = body.classList.toggle('light-mode');
+            const themeText = document.getElementById('theme-text');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (isLightMode) {
+                themeText.textContent = 'Dark Mode';
+                themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />';
+            } else {
+                themeText.textContent = 'Light Mode';
+                themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
+            }
+        }
+    </script>
 </body>
 
 </html>
