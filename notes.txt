@@ -1,5 +1,7 @@
 PROFIL APLIKASI DIGITAL: N8N
 
+n8n adalah platform workflow automation dan AI orchestration berbasis di Berlin, Jerman, yang didirikan oleh Jan Oberhauser dengan dukungan investor global ternama seperti Sequoia Capital. Mengusung model bisnis inovatif "Fair-Code", n8n membedakan diri dari kompetitor melalui transparansi kode sumber dan kemampuan self-hosting yang memberikan kedaulatan data (data sovereignty) penuh—sebuah keunggulan krusial bagi sektor yang mengutamakan keamanan siber. Sebagai solusi low-code berbasis node, platform ini melayani spektrum pengguna yang luas, mulai dari UMKM yang mencari efisiensi biaya hingga raksasa korporat seperti Vodafone dan Delivery Hero yang membutuhkan otomatisasi kompleks dengan integrasi agen AI. Dengan memanfaatkan ekosistem komunitas aktif di GitHub untuk pengembangan integrasi secara organik, n8n berhasil memposisikan diri sebagai infrastruktur otomatisasi yang tangguh, fleksibel, dan sangat skalabel bagi ekosistem bisnis digital modern.
+
 ​1. Deskripsi Aplikasi
 ​Nama Aplikasi: n8n
 Kategori: Workflow Automation & AI Orchestration.
