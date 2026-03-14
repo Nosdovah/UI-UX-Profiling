@@ -889,7 +889,7 @@
             color: var(--text-main);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         body.light-mode .action-btn.secondary {
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
@@ -898,14 +898,16 @@
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 15px 25px rgba(255, 107, 107, 0.6);
         }
-        
+
         .action-btn.secondary:hover {
             border-color: var(--text-main);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
         }
 
         @media print {
-            html, body {
+
+            html,
+            body {
                 background: #0f172a !important;
                 background-color: #0f172a !important;
                 -webkit-print-color-adjust: exact !important;
@@ -913,7 +915,7 @@
                 padding: 0 !important;
                 margin: 0 !important;
             }
-            
+
             /* Aggressive hack to force background painting if "print graphics" is disabled */
             body::before {
                 content: '';
@@ -926,11 +928,12 @@
                 z-index: -9999;
                 pointer-events: none;
             }
-            
-            .print-btn, .bg-orb {
+
+            .print-btn,
+            .bg-orb {
                 display: none !important;
             }
-            
+
             .container {
                 animation: none !important;
                 transform: none !important;
@@ -942,7 +945,11 @@
             }
 
             /* Convert glassmorphism transparency to solid colors for print */
-            .table-container, .card, .usecase-card, .problem-item, .need-item {
+            .table-container,
+            .card,
+            .usecase-card,
+            .problem-item,
+            .need-item {
                 background-color: #1e293b !important;
                 border: 1px solid #334155 !important;
                 backdrop-filter: none !important;
@@ -950,16 +957,22 @@
                 box-shadow: none !important;
                 break-inside: avoid !important;
                 page-break-inside: avoid !important;
-                margin-bottom: 1.5rem !important; /* Spacing since we remove grid */
+                margin-bottom: 1.5rem !important;
+                /* Spacing since we remove grid */
             }
 
             /* Convert Grid to Block for reliable PDF Page Breaking */
-            .cards-container, .usecase-grid, .needs-grid, .problem-list {
+            .cards-container,
+            .usecase-grid,
+            .needs-grid,
+            .problem-list {
                 display: block !important;
             }
 
             /* Force cards to take full width neatly block by block */
-            .card, .usecase-card, .need-item {
+            .card,
+            .usecase-card,
+            .need-item {
                 width: 100% !important;
                 display: block !important;
             }
@@ -972,27 +985,37 @@
                 font-size: 2.2rem !important;
             }
 
-            .section-title, .table-title, .profile-header {
+            .section-title,
+            .table-title,
+            .profile-header {
                 break-after: avoid !important;
                 page-break-after: avoid !important;
                 margin-top: 2rem !important;
                 margin-bottom: 1rem !important;
             }
 
-            th, td {
+            th,
+            td {
                 border-bottom: 1px solid #334155 !important;
             }
 
             /* Ensure text stays readable over dark solid backgrounds */
-            h2, h3, h4, th, .stakeholder {
+            h2,
+            h3,
+            h4,
+            th,
+            .stakeholder {
                 color: #f8fafc !important;
             }
-            
-            p, .peran, .desc {
+
+            p,
+            .peran,
+            .desc {
                 color: #cbd5e1 !important;
             }
-            
-            .usecase-example, .badge {
+
+            .usecase-example,
+            .badge {
                 border: 1px solid #536DFF !important;
             }
         }
@@ -1019,7 +1042,16 @@
                 <h2>Company Profile</h2>
             </div>
             <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.8; text-align: justify;">
-                n8n adalah platform workflow automation dan AI orchestration berbasis di Berlin, Jerman, yang didirikan oleh Jan Oberhauser dengan dukungan investor global ternama seperti Sequoia Capital. Mengusung model bisnis inovatif "Fair-Code", n8n membedakan diri dari kompetitor melalui transparansi kode sumber dan kemampuan self-hosting yang memberikan kedaulatan data (<em>data sovereignty</em>) penuh—sebuah keunggulan krusial bagi sektor yang mengutamakan keamanan siber. Sebagai solusi low-code berbasis node, platform ini melayani spektrum pengguna yang luas, mulai dari UMKM yang mencari efisiensi biaya hingga raksasa korporat seperti Vodafone dan Delivery Hero yang membutuhkan otomatisasi kompleks dengan integrasi agen AI. Dengan memanfaatkan ekosistem komunitas aktif di GitHub untuk pengembangan integrasi secara organik, n8n berhasil memposisikan diri sebagai infrastruktur otomatisasi yang tangguh, fleksibel, dan sangat skalabel bagi ekosistem bisnis digital modern.
+                n8n adalah platform workflow automation dan AI orchestration berbasis di Berlin, Jerman, yang didirikan
+                oleh Jan Oberhauser dengan dukungan investor global ternama seperti Sequoia Capital. Mengusung model
+                bisnis inovatif "Fair-Code", n8n membedakan diri dari kompetitor melalui transparansi kode sumber dan
+                kemampuan self-hosting yang memberikan kedaulatan data (<em>data sovereignty</em>) penuh, sebuah
+                keunggulan krusial bagi sektor yang mengutamakan keamanan siber. Sebagai solusi low-code berbasis node,
+                platform ini melayani spektrum pengguna yang luas, mulai dari UMKM yang mencari efisiensi biaya hingga
+                raksasa korporat seperti Vodafone dan Delivery Hero yang membutuhkan otomatisasi kompleks dengan
+                integrasi agen AI. Dengan memanfaatkan ekosistem komunitas aktif di GitHub untuk pengembangan integrasi
+                secara organik, n8n berhasil memposisikan diri sebagai infrastruktur otomatisasi yang tangguh,
+                fleksibel, dan sangat skalabel bagi ekosistem bisnis digital modern.
             </p>
         </div>
 
@@ -1470,8 +1502,11 @@
 
         <!-- Team Section added for authors -->
         <div class="team-section" style="margin-top: 5rem; text-align: center; margin-bottom: 2rem;">
-            <p class="subtitle" style="margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 500; color: var(--text-muted);">Disusun Oleh:</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; justify-content: center;">
+            <p class="subtitle"
+                style="margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 500; color: var(--text-muted);">Disusun
+                Oleh:</p>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; justify-content: center;">
                 <div class="card" style="text-align: center; padding: 2rem 1.5rem;">
                     <h4 style="font-size: 1.2rem; margin-bottom: 0.8rem;">M Zhafran Fawwaz</h4>
                     <span class="badge">NPM: 023124046</span>
@@ -1497,16 +1532,20 @@
     <div class="controls-container">
         <!-- Theme Toggle Button -->
         <button class="action-btn secondary print-btn" onclick="toggleTheme()" id="theme-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="theme-icon">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" id="theme-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
             <span id="theme-text">Light Mode</span>
         </button>
 
         <!-- Export to PDF Button -->
         <button class="action-btn print-btn" onclick="window.print()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
             </svg>
             Export PDF
         </button>
@@ -1518,7 +1557,7 @@
             const isLightMode = body.classList.toggle('light-mode');
             const themeText = document.getElementById('theme-text');
             const themeIcon = document.getElementById('theme-icon');
-            
+
             if (isLightMode) {
                 themeText.textContent = 'Dark Mode';
                 themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />';
