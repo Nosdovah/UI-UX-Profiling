@@ -1019,6 +1019,107 @@
                 border: 1px solid #536DFF !important;
             }
         }
+        /* ===== Company Profile Inline Visualisasi ===== */
+        .cp-card-clickable {
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .cp-card-clickable:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(255, 107, 107, 0.2);
+            border-color: rgba(255, 107, 107, 0.45);
+        }
+
+        .cp-click-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-top: 1rem;
+            color: #FF6B6B;
+            font-size: 0.84rem;
+            font-weight: 600;
+            opacity: 0.7;
+            letter-spacing: 0.03em;
+            transition: opacity 0.25s ease;
+            user-select: none;
+        }
+
+        .cp-card-clickable:hover .cp-click-hint {
+            opacity: 1;
+        }
+
+        .cp-click-hint svg {
+            flex-shrink: 0;
+            animation: pulse-icon 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50%       { transform: scale(1.3); }
+        }
+
+        /* Inline image panel */
+        .cp-inline-panel {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.45s ease, opacity 0.35s ease, margin-top 0.35s ease;
+            margin-top: 0;
+        }
+
+        .cp-inline-panel.open {
+            max-height: 1200px;
+            opacity: 1;
+            margin-top: 1.2rem;
+        }
+
+        .cp-inline-panel img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            display: block;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+            border: 1px solid rgba(255,107,107,0.2);
+        }
+
+        .cp-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+
+        .cp-panel-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #FF6B6B;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .cp-panel-close {
+            background: rgba(255,107,107,0.12);
+            border: 1px solid rgba(255,107,107,0.35);
+            color: #FF6B6B;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .cp-panel-close:hover {
+            background: rgba(255,107,107,0.3);
+            transform: rotate(90deg);
+        }
     </style>
 </head>
 
@@ -1037,7 +1138,7 @@
         </header>
 
         <!-- Company Profile Section -->
-        <div class="table-container" style="margin-bottom: 3rem;">
+        <div class="table-container cp-card-clickable" style="margin-bottom: 3rem;" onclick="toggleCpPanel(event)" id="company-profile-card">
             <div class="profile-header" style="margin-bottom: 1.2rem; padding-bottom: 1rem;">
                 <h2>Company Profile</h2>
             </div>
@@ -1053,6 +1154,23 @@
                 secara organik, n8n berhasil memposisikan diri sebagai infrastruktur otomatisasi yang tangguh,
                 fleksibel, dan sangat skalabel bagi ekosistem bisnis digital modern.
             </p>
+
+            <!-- Inline visualisasi panel (toggle on card click) -->
+            <div class="cp-inline-panel" id="cp-inline-panel">
+                <div class="cp-panel-header">
+                    <span class="cp-panel-label">&#128248; Visualisasi Company Profile</span>
+                    <button class="cp-panel-close" onclick="closeCpPanel(event)" title="Tutup">&#10005;</button>
+                </div>
+                <img src="images/CompanyProfile.jpg" alt="Visualisasi Company Profile n8n">
+            </div>
+
+            <div class="cp-click-hint" id="cp-hint">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <span id="cp-hint-text">Klik untuk lihat visualisasi</span>
+            </div>
         </div>
 
         <div class="profile-section">
@@ -1565,6 +1683,21 @@
                 themeText.textContent = 'Light Mode';
                 themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
             }
+        }
+
+        /* ===== Company Profile Inline Panel ===== */
+        function toggleCpPanel(e) {
+            const panel = document.getElementById('cp-inline-panel');
+            const hint  = document.getElementById('cp-hint-text');
+            const isOpen = panel.classList.toggle('open');
+            hint.textContent = isOpen ? 'Klik untuk sembunyikan' : 'Klik untuk lihat visualisasi';
+        }
+
+        function closeCpPanel(e) {
+            e.stopPropagation();
+            const panel = document.getElementById('cp-inline-panel');
+            panel.classList.remove('open');
+            document.getElementById('cp-hint-text').textContent = 'Klik untuk lihat visualisasi';
         }
     </script>
 </body>
